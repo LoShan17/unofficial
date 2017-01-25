@@ -1,4 +1,8 @@
 
+import os
+
+
+USER_DIR = os.path.expanduser("~")
 KeyRatiosSummary = 'http://financials.morningstar.com/ajax/exportKR2CSV.html'
 
 

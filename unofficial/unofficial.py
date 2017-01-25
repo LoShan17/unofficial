@@ -3,8 +3,7 @@ import csv
 import requests
 import random
 
-from core import WrongQueryParameterException
-from data_reference import CASH_FLOWS_STATEMENT, INCOME_STATEMENT, BALANCE_SHEET_STATEMENT, AVAILABLE_RANGES, GET_TIMERANGE, 
+from data_reference import CASH_FLOWS_STATEMENT, INCOME_STATEMENT, BALANCE_SHEET_STATEMENT, GET_TIMERANGE
 
 # key ratios example
 # http://financials.morningstar.com/ajax/exportKR2CSV.html?t=FB
@@ -23,7 +22,7 @@ class UnofficialTerminal(object):
     managing and storing the result of responses.
     """
 
-    def __init__():
+    def __init__(self):
         self.current_data = None
         self.current_query = {}
         self.current_response_text = None
@@ -45,22 +44,24 @@ class UnofficialTerminal(object):
             ## could use warnings here instead of this
             print("Error executing request: " + response.reason)
 
-    def last_response_csv_dump(path):
+    def last_response_csv_dump(self, outpath):
         """
         dump the result of the last request to the API
         in a csv file in the specified file
         """
         # find a way to properly output this
-        with open(path, 'w') as outfile:
-            pass
+        with open(outpath, 'w') as csvFile:
+            writer = csv.writer(csvFile, delimiter=',')
+            for line in data.split('\n'):
+                writer.writerow(line.split(','))
 
-    def last_response_to_json():
+    def last_response_to_json(self):
         """
         return a json from the last received csv table
         """
         pass
 
-    def get_table(**kwargs):
+    def get_table(self, **kwargs):
         """
         Standard Get request to get the requested financial summary
         parameters for the request are:
@@ -70,11 +71,12 @@ class UnofficialTerminal(object):
         self.current_query = kwargs
         pass
 
-    def pp_last_request():
+    def pp_last_request(self):
         """
         pretty print to the terminal the test from the 
         last received csv
         """
+        pass
 
 
 

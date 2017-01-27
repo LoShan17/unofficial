@@ -1,10 +1,21 @@
 
 import os
-
+import datetime as dt
 
 USER_DIR = os.path.expanduser("~")
-KeyRatiosSummary = 'http://financials.morningstar.com/ajax/exportKR2CSV.html'
+#DATABASE_LOCATION = os.path.join(USER_DIR, 'unofficial_data')
+DATABASE_LOCATION = os.path.join('S:', os.path.sep, 'ETF', 'Daniel', 'Spread_Monitoring', 'unofficial_data')
 
+today = dt.datetime.now().date()
+TODAY_STR = today.strftime("%d/%m/%Y") 
+
+class KeyRatiosSummary(object):
+    address = 'http://financials.morningstar.com/ajax/exportKR2CSV.html'
+    csv_name = 'KeyRatios'
+
+class FinancialStatement(object):
+    address = 'http://financials.morningstar.com/ajax/ReportProcess4CSV.html'
+    csv_name = 'Statement'
 
 CASH_FLOWS_STATEMENT = 'cf'
 INCOME_STATEMENT = 'is'
